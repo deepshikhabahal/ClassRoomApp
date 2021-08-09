@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_maths"
+        android:title="@string/maths"
+        android:icon="@drawable/ic_baseline_calculate_24"/>
+
+    <item
+        android:id="@+id/nav_english"
+        android:title="@string/english"
+        android:icon="@drawable/ic_baseline_sort_by_alpha_24"/>
+
+
+    <item
+        android:id="@+id/nav_science"
+        android:title="@string/science"
+        android:icon="@drawable/ic_baseline_science_24"/>
+
+    <item
+        android:id="@+id/nav_social_science"
+        android:title="@string/social_science"
+        android:icon="@drawable/ic_baseline_eco_24"/>
+
+    <item
+        android:id="@+id/nav_hindi"
+        android:title="@string/hindi"
+        android:icon="@drawable/ic_baseline_translate_24"/>
+
+    <item
+        android:id="@+id/nav_gk"
+        android:title="@string/general_knowledge"
+        android:icon="@drawable/ic_baseline_emoji_objects_24"/>
+
+    <item
+        android:id="@+id/nav_settings"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_baseline_settings_24"/>
+
+    <item
+        android:id="@+id/nav_logout"
+        android:title="@string/logout"
+        android:icon="@drawable/ic_baseline_power_settings_new_24"/>
+
+
+</menu>

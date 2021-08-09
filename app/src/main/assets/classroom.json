@@ -1,24 +1,49 @@
 {
   "videos":[
    {
-     "videotitle": "29 SCIENCE TRICKS that look like real MAGIC",
-     "videoartist ": "5-MINUTE MAGIC"
+     "videoTitle": "29 SCIENCE TRICKS that look like real MAGIC",
+     "videoArtist": "5-MINUTE MAGIC",
+     "videoCoverImage": "https://i.ytimg.com/vi/NCjf6og4qHk/maxresdefault.jpg"
    },
    {
-     "videotitle ": "EASY SCIENCE EXPERIMENTS TO DO AT HOME",
-     "videoartist ": "Crafts for Kids"
+     "videoTitle": "EASY SCIENCE EXPERIMENTS TO DO AT HOME",
+     "videoArtist": "Crafts for Kids",
+     "videoCoverImage": "https://i.ytimg.com/vi/z-R3DShHbkA/maxresdefault.jpg"
    },
    {
-     "videotitle ": "Black Holes Explained – From Birth to Death",
-     "videoartist ": "Kurzgesagt– In a Nutshell"
+     "videoTitle": "Black Holes Explained – From Birth to Death",
+     "videoArtist": "Kurzgesagt– In a Nutshell",
+     "videoCoverImage": "https://i.ytimg.com/vi/e-P5IFTqB98/maxresdefault.jpg"
    },
  {
-     "videotitle ": "5 Math Tricks That Will Blow Your Mind",
-     "videoartist ": "Mind Warehouse"
+     "videoTitle": "5 Math Tricks That Will Blow Your Mind",
+     "videoArtist": "Mind Warehouse",
+   "videoCoverImage": "https://i.ytimg.com/vi/-wkr_vf18cw/maxresdefault.jpg"
    },
    {
-     "videotitle ": "The magic of Vedic math - Gaurav Tekriwal",
-     "videoartist ": "TED-Ed"
+     "videoTitle": "The magic of Vedic math - Gaurav Tekriwal",
+     "videoArtist": "TED-Ed",
+     "videoCoverImage": "https://i.ytimg.com/vi/grkWGeqW99c/maxresdefault.jpg"
+   },
+   {
+     "videoTitle": "The Map of Mathematics",
+     "videoArtist": "DoS - Domain of Science",
+     "videoCoverImage": "https://i.ytimg.com/vi/OmJ-4B-mS-Y/maxresdefault.jpg"
+   },
+   {
+     "videoTitle": "Words not coming to mind when speaking English",
+     "videoArtist": "AleenaRaisLive",
+     "videoCoverImage": "https://i.ytimg.com/vi/Ms6qzk6-prU/hqdefault.jpg"
+   },
+   {
+     "videoTitle": "ALL the ENGLISH BASICS you need - Learn English IN 35 MINUTES",
+     "videoArtist": "linguamarina",
+     "videoCoverImage": "https://en.ava360.com/uploads/thumbs/ff4752235-social.jpg"
+   },
+   {
+     "videoTitle": "Do You Have 1 Hour? You Can Speak Like a Native English Speaker",
+     "videoArtist": "Learn English with EnglishClass101.com",
+     "videoCoverImage": "https://i.ytimg.com/vi/HV6h7MRrRNA/maxresdefault.jpg"
    }
  ]
 }
