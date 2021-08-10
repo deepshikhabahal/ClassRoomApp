@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
-    private static int SPLASH_SCREEN = 4000;
 
     //Variables
     Animation topAnim, bottomAnim;
@@ -32,6 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
 
+        int SPLASH_SCREEN = 4000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -39,6 +39,6 @@ public class SplashActivity extends AppCompatActivity {
                startActivity(intent);
                finish();
             }
-        },SPLASH_SCREEN);
+        }, SPLASH_SCREEN);
     }
 }

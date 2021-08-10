@@ -9,12 +9,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,12 +36,15 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> VideoArtist = new ArrayList<>();
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private FirebaseAuth mAuth;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
 
         recyclerView = findViewById(R.id.video_list);
         NavigationView navigationView = findViewById(R.id.navigation_view);
@@ -50,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
 
 
@@ -88,6 +97,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser == null) {
+            SendUserToLoginActivity();
+        }
+
+    }
+
+
+
+    private void SendUserToLoginActivity() {
+        Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(loginIntent);
+        finish();
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -126,6 +154,11 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.nav_settings:
                 Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.nav_logout:
+                mAuth.signOut();
+                SendUserToLoginActivity();
                 break;
 
 
