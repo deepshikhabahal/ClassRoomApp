@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,8 +22,6 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText loginEmail, loginPassword;
-    private Button loginButton;
-    private TextView needNewAccountLink;
     private FirebaseAuth mAuth;
     private ProgressDialog loadingBar;
 
@@ -36,24 +33,14 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         loadingBar = new ProgressDialog(this);
 
-        needNewAccountLink = findViewById(R.id.no_account);
+        TextView needNewAccountLink = findViewById(R.id.no_account);
         loginEmail = findViewById(R.id.login_email);
         loginPassword = findViewById(R.id.login_password);
-        loginButton = findViewById(R.id.login_button);
+        Button loginButton = findViewById(R.id.login_button);
 
-        needNewAccountLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SendUserToRegisterActivity();
-            }
-        });
+        needNewAccountLink.setOnClickListener(v -> SendUserToRegisterActivity());
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { 
-            allowingUserToLogin();
-            }
-        });
+        loginButton.setOnClickListener(v -> allowingUserToLogin());
     }
 
     @Override

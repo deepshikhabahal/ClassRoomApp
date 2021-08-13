@@ -19,13 +19,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     //Creating Arraylists
     ArrayList<String> videoTitle;
     ArrayList<String> videoArtist;
+    ArrayList<String> videoDuration;
     Context context;
 
     //Constructor
 
-    public CustomAdapter(ArrayList<String> mainVideoTitle, ArrayList<String> mainVideoArtist, Context context) {
+    public CustomAdapter(ArrayList<String> mainVideoTitle, ArrayList<String> mainVideoArtist, ArrayList<String> mainVideoDuration, Context context) {
         this.videoTitle = mainVideoTitle;
         this.videoArtist = mainVideoArtist;
+        this.videoDuration= mainVideoDuration;
         this.context = context;
     }
 
@@ -44,16 +46,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         //set the data in items
         holder.videoTitle.setText(videoTitle.get(position));
         holder.videoArtist.setText(videoArtist.get(position));
+        holder.videoDuration.setText(videoDuration.get(position));
 
         //Adding OnclickListener
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(v -> {
+            //Displaying a message with name
+            Toast.makeText(context, videoTitle.get(position), Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onClick(View v) {
-                //Displaying a message with name
-                Toast.makeText(context, videoTitle.get(position), Toast.LENGTH_SHORT).show();
-
-            }
         });
     }
 
@@ -66,13 +65,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     //MyHolder class
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        private final TextView videoTitle, videoArtist;
+        private final TextView videoTitle, videoArtist, videoDuration;
 
         //Constructor
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             videoTitle = itemView.findViewById(R.id.child_video_title);
             videoArtist = itemView.findViewById(R.id.child_video_artist);
+            videoDuration = itemView.findViewById(R.id.video_duration_label);
         }
     }
 }

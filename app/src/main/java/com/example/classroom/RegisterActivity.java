@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,7 +21,6 @@ import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText registerName, registerEmail, registerPassword, registerConfirmPassword;
-    private Button registerCreateAccount;
     private FirebaseAuth mAuth;
     private ProgressDialog loadingBar;
 
@@ -37,15 +35,10 @@ public class RegisterActivity extends AppCompatActivity {
         registerEmail = findViewById(R.id.register_email);
         registerPassword = findViewById(R.id.register_password);
         registerConfirmPassword = findViewById(R.id.register_confirm_password);
-        registerCreateAccount = findViewById(R.id.register_create_account);
+        Button registerCreateAccount = findViewById(R.id.register_create_account);
         loadingBar = new ProgressDialog(this);
 
-        registerCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createNewAccount();
-            }
-        });
+        registerCreateAccount.setOnClickListener(v -> createNewAccount());
     }
 
     @Override

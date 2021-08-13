@@ -18,8 +18,6 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<String> VideoTitle = new ArrayList<>();
     ArrayList<String> VideoArtist = new ArrayList<>();
+    ArrayList<String> VideoDuration = new ArrayList<>();
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FirebaseAuth mAuth;
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         recyclerView = findViewById(R.id.video_list);
+        recyclerView.setHasFixedSize(true);
         NavigationView navigationView = findViewById(R.id.navigation_view);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -59,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
-
         View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -71,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
 
         //getting Json
         try {
@@ -85,17 +80,49 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject videoDetail = videoArray.getJSONObject(i);
                 VideoTitle.add(videoDetail.getString("videoTitle"));
                 VideoArtist.add(videoDetail.getString("videoArtist"));
+                VideoDuration.add(videoDetail.getString("videoDuration"));
             }
             //calling the CustomAdapter to send the reference and data to adapter
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(linearLayoutManager);
-            CustomAdapter customAdapter = new CustomAdapter(VideoTitle, VideoArtist, MainActivity.this);
+            CustomAdapter customAdapter = new CustomAdapter(VideoTitle, VideoArtist,VideoDuration,MainActivity.this);
             recyclerView.setAdapter(customAdapter);
         }
         catch (JSONException e){
             e.printStackTrace();
         }
+        populateRecyclerView();
+
     }
+
+    private void populateRecyclerView() {
+            final ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList = generateDummyVideoList();
+            YoutubeVideoAdapter adapter = new YoutubeVideoAdapter(this, youtubeVideoModelArrayList);
+            recyclerView.setAdapter(adapter);
+
+            recyclerView.addOnItemTouchListener()
+
+
+        }
+
+    private ArrayList<YoutubeVideoModel> generateDummyVideoList() {
+        ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList = new ArrayList<>();
+//get the video id array, title array and duration array from strings.xml
+        String[] videoIDArray = getResources().getStringArray(R.array.video_id_array);
+
+        //loop through all items and add them to arraylist
+        for (String s : videoIDArray) {
+
+            YoutubeVideoModel youtubeVideoModel = new YoutubeVideoModel();
+            youtubeVideoModel.setVideoId(s);
+
+            youtubeVideoModelArrayList.add(youtubeVideoModel);
+        }
+
+        return youtubeVideoModelArrayList;
+    }
+
+
 
     @Override
     protected void onStart() {
