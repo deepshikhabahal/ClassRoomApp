@@ -44,7 +44,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
                     //  youTubePlayer.setFullscreen(true);
 
                     //If you want the video should play automatically then uncomment below comment
-                    //  youTubePlayer.play();
+                     youTubePlayer.play();
 
                     //If you want to control the full screen event you can uncomment the below code
                     //Tell the player you want to control the fullscreen change
@@ -53,7 +53,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
                     player.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
                         @Override
                         public void onFullscreen(boolean arg0) {
-                             do full screen stuff here, or don't.
+                                                                                                                                                                                                                                     do full screen stuff here, or don't.
                             Log.e(TAG,"Full screen mode");
                         }
                     });*/

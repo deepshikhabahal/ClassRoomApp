@@ -19,20 +19,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {//implements YoutubeVideoAdapter.itemClickListener {
     RecyclerView recyclerView;
-    ArrayList<String> VideoTitle = new ArrayList<>();
-    ArrayList<String> VideoArtist = new ArrayList<>();
-    ArrayList<String> VideoDuration = new ArrayList<>();
 
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FirebaseAuth mAuth;
@@ -47,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.video_list);
         recyclerView.setHasFixedSize(true);
+
         NavigationView navigationView = findViewById(R.id.navigation_view);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -68,9 +60,13 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        populateRecyclerView();
+    }
 
-        //getting Json
-        try {
+    //getting Json
+       /* try {
             //getting JSON object from Json file
             JSONObject obj = new JSONObject(loadJSONFromAssets());
             //fetch JSONArray named users
@@ -87,41 +83,55 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(linearLayoutManager);
             CustomAdapter customAdapter = new CustomAdapter(VideoTitle, VideoArtist,VideoDuration,MainActivity.this);
             recyclerView.setAdapter(customAdapter);
+
         }
         catch (JSONException e){
             e.printStackTrace();
         }
-        populateRecyclerView();
-
-    }
+  }*/
 
     private void populateRecyclerView() {
-            final ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList = generateDummyVideoList();
-            YoutubeVideoAdapter adapter = new YoutubeVideoAdapter(this, youtubeVideoModelArrayList);
-            recyclerView.setAdapter(adapter);
+        final ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList = generateDummyVideoList();
+        YoutubeVideoAdapter adapter = new YoutubeVideoAdapter(this, youtubeVideoModelArrayList); //this);
+        recyclerView.setAdapter(adapter);
 
-            recyclerView.addOnItemTouchListener()
+        recyclerView.addOnItemTouchListener(new RecyclerViewOnClickListener(this, (view, position) -> startActivity(new Intent(MainActivity.this, YoutubePlayerActivity.class)
+                .putExtra("video_id", youtubeVideoModelArrayList.get(position).getVideoId()))));
+    }
 
+   /* @Override
+    public void onItemClick(int position) {
+        Toast.makeText(this, "Position is " + position, Toast.LENGTH_SHORT).show();
+        final ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList = generateDummyVideoList();
+        YoutubeVideoAdapter adapter = new YoutubeVideoAdapter(this, youtubeVideoModelArrayList, this);
+        recyclerView.setAdapter(adapter);
+        startActivity(new Intent(MainActivity.this, YoutubePlayerActivity.class)
+                .putExtra("video_id", youtubeVideoModelArrayList.get(position).getVideoId()));
 
-        }
+    } */
 
     private ArrayList<YoutubeVideoModel> generateDummyVideoList() {
         ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList = new ArrayList<>();
 //get the video id array, title array and duration array from strings.xml
         String[] videoIDArray = getResources().getStringArray(R.array.video_id_array);
+        String[] videoTitleArray = getResources().getStringArray(R.array.video_title_array);
+        String[] videoArtistArray = getResources().getStringArray(R.array.video_artist_array);
+        String[] videoDurationArray = getResources().getStringArray(R.array.video_duration_array);
 
         //loop through all items and add them to arraylist
-        for (String s : videoIDArray) {
+        for (int i = 0; i < videoIDArray.length; i++) {
 
             YoutubeVideoModel youtubeVideoModel = new YoutubeVideoModel();
-            youtubeVideoModel.setVideoId(s);
+            youtubeVideoModel.setVideoId(videoIDArray[i]);
+            youtubeVideoModel.setTitle(videoTitleArray[i]);
+            youtubeVideoModel.setArtist(videoArtistArray[i]);
+            youtubeVideoModel.setDuration(videoDurationArray[i]);
 
             youtubeVideoModelArrayList.add(youtubeVideoModel);
         }
 
         return youtubeVideoModelArrayList;
     }
-
 
 
     @Override
@@ -134,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
 
 
     private void SendUserToLoginActivity() {
@@ -191,8 +200,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+}
 
-    private String loadJSONFromAssets() {
+    /*private String loadJSONFromAssets() {
         String json = null;
 
         try {
@@ -210,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
-}
+}*/
+
 
 

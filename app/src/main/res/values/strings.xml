@@ -40,4 +40,42 @@
         <item>IhQt_fxGOcw</item>
 
     </string-array>
+
+    <string-array name="video_title_array">
+        <item>29 SCIENCE TRICKS that look like real MAGIC</item>
+        <item>EASY SCIENCE EXPERIMENTS</item>
+        <item>Black Holes Explained – From Birth to Death</item>
+        <item>5 Math Tricks That Will Blow Your Mind</item>
+        <item>The magic of Vedic math - Gaurav Tekriwal</item>
+        <item>The Map of Mathematics</item>
+        <item>Words not coming to mind when speaking English</item>
+        <item>ALL the ENGLISH BASICS you need</item>
+        <item>Spoken English Leaning Video Conversation</item>
+
+    </string-array>
+
+    <string-array name="video_artist_array">
+        <item>5-MINUTE MAGIC</item>
+        <item>Crafts for Kids</item>
+        <item>Kurzgesagt– In a Nutshell</item>
+        <item>Maths is Easy</item>
+        <item>TED-Ed</item>
+        <item>DoS - Domain of Science</item>
+        <item>AleenaRaisLive</item>
+        <item>linguamarina</item>
+        <item>Heaven Luk</item>
+
+    </string-array>
+
+    <string-array name="video_duration_array">
+        <item>14:09</item>
+        <item>06:09</item>
+        <item>05:56</item>
+        <item>05:06</item>
+        <item>09:45</item>
+        <item>11:06</item>
+        <item>10:57</item>
+        <item>36:13</item>
+        <item>20:43</item>
+    </string-array>
 </resources>
