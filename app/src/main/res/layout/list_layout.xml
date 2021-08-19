@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -26,6 +27,8 @@
             android:id="@+id/video_thumbnail_image_view"
             android:layout_width="130dp"
             android:layout_height="160dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
             android:background="@color/colorPrimary"
             android:contentDescription="@string/thumbnail_image_view_desc"
             android:scaleType="centerCrop" />
@@ -81,7 +84,8 @@
             android:gravity="center_vertical|end"
             android:text="@string/_24_33min"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:ignore="RtlSymmetry" />
 
 
     </RelativeLayout>

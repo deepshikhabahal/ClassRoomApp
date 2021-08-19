@@ -18,18 +18,17 @@ import java.util.ArrayList;
 
 public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapter.YoutubeViewHolder> {//implements View.OnClickListener {
     private static final String TAG = YoutubeVideoAdapter.class.getSimpleName();
-    Context context;
+    final Context context;
     private final ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList;
     //itemClickListener itemClickListener;
 
-  /*  @Override
-    public void onClick(View v) {
-        itemClickListener.onItemClick(1);
-    }
-
-     interface itemClickListener {
-        void onItemClick(int position);
-    }*/
+    //  @Override
+    /* public void onClick(View v) {
+    //     itemClickListener.onItemClick(1);
+    //}
+         interface itemClickListener {
+         void onItemClick(int position);
+     }*/
 
 
     public YoutubeVideoAdapter(Context context, ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList) { //itemClickListener itemClickListener) {
@@ -56,12 +55,11 @@ public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapte
         holder.videoDuration.setText(youtubeVideoModel.getDuration());
 
         /* To initialize the thumbnail image view , we need to pass Developer Key */
-        Log.d(TAG, "readyForLoadingYoutubeThumbnail");
 
         holder.videoThumbnailImageView.initialize(YoutubeConfig.API_KEY, new YouTubeThumbnailView.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, final YouTubeThumbnailLoader youTubeThumbnailLoader) {
-                //when initialization is success, set the video id to thumbnail to load
+                //when initialization is successful, set the video id to thumbnail to load
                 youTubeThumbnailLoader.setVideo(youtubeVideoModel.getVideoId());
 
                 youTubeThumbnailLoader.setOnThumbnailLoadedListener(new YouTubeThumbnailLoader.OnThumbnailLoadedListener() {
@@ -74,7 +72,6 @@ public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapte
 
                     @Override
                     public void onThumbnailError(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader.ErrorReason errorReason) {
-                        //print or show error when thumbnail load failed
                         youTubeThumbnailLoader.release();
                         Log.e(TAG, "Youtube Thumbnail Error");
                     }
@@ -83,7 +80,6 @@ public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapte
 
             @Override
             public void onInitializationFailure(YouTubeThumbnailView youTubeThumbnailView, YouTubeInitializationResult youTubeInitializationResult) {
-                //print or show error when initialization failed
                 Log.e(TAG, "Youtube Initialization Failure");
             }
         });
@@ -96,26 +92,24 @@ public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapte
     }
 
     public static class YoutubeViewHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener {
-        public YouTubeThumbnailView videoThumbnailImageView;
-        public TextView videoTitle, videoArtist, videoDuration;
+        public final YouTubeThumbnailView videoThumbnailImageView;
+        public final TextView videoTitle;
+        public final TextView videoArtist;
+        public final TextView videoDuration;
         // itemClickListener itemClickListener;
 
         public YoutubeViewHolder(@NonNull View itemView) { //itemClickListener itemClickListener) {
             super(itemView);
-            // this.itemClickListener = itemClickListener;
-            // itemView.setOnClickListener(this);
             videoThumbnailImageView = itemView.findViewById(R.id.video_thumbnail_image_view);
             videoTitle = itemView.findViewById(R.id.child_video_title);
             videoArtist = itemView.findViewById(R.id.child_video_artist);
             videoDuration = itemView.findViewById(R.id.child_video_duration);
-
+            // this.itemClickListener = itemClickListener;
+            /* itemView.setOnClickListener(this);*/
         }
-    }
-}
 
        /* @Override
         public void onClick(View v) {
-            itemClickListener.onItemClick(getAdapterPosition());
+            itemClickListener.onItemClick(getAdapterPosition());*/
         }
     }
-}*/

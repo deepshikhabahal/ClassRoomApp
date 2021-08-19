@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
 
-        int SPLASH_SCREEN = 3000;
+        int SPLASH_SCREEN = 2500;
         new Handler().postDelayed(() -> {
            Intent intent = new Intent(SplashActivity.this,MainActivity.class);
            startActivity(intent);

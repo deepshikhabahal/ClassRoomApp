@@ -3,7 +3,7 @@ package com.example.classroom;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
+import android.widget.Button;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -14,6 +14,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
     private static final String TAG = YoutubePlayerActivity.class.getSimpleName();
     private String videoID;
     private YouTubePlayerView youTubePlayerView;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
         videoID = getIntent().getStringExtra("video_id");
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         initializeYoutubePlayer();
+        button = findViewById(R.id.video_button);
 
     }
 
@@ -35,18 +37,27 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
                     youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
 
                     //load the video
-                    youTubePlayer.loadVideo(videoID);
+                    //youTubePlayer.loadVideo(videoID);
 
                     //OR
 
                     //cue the video
-                    //youTubePlayer.cueVideo(videoID);
+                    youTubePlayer.cueVideo(videoID);
+
+                    button.setOnClickListener(v -> {
+                       // youTubePlayer.setFullscreen(true);
+                        youTubePlayer.play();
+                        button.setText("Pause");
+                        if (youTubePlayer.isPlaying()) {
+                            youTubePlayer.pause();
+                            button.setText("Resume");
+                        } else {
+                            youTubePlayer.play();
+                        }
+                    });
 
                     //if you want when activity start it should be in full screen uncomment below comment
                     //  youTubePlayer.setFullscreen(true);
-
-                    //If you want the video should play automatically then uncomment below comment
-                     youTubePlayer.play();
 
                     //If you want to control the full screen event you can uncomment the below code
                     //Tell the player you want to control the fullscreen change
@@ -65,10 +76,11 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
 
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                //print or show error if initialization failed
                 Log.e(TAG, "Youtube Player View initialization failed");
             }
         });
 
     }
+
+
 }

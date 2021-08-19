@@ -14,7 +14,7 @@ public class RecyclerViewOnClickListener implements RecyclerView.OnItemTouchList
     private final GestureDetector mGestureDetector;
 
     public interface OnItemClickListener {
-        public void onItemClick(View view, int position);
+        void onItemClick(View view, int position);
     }
 
     public RecyclerViewOnClickListener(Context context, OnItemClickListener listener) {

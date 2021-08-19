@@ -12,7 +12,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {//implements YoutubeVideoAd
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        View navView = navigationView.inflateHeaderView(R.layout.navigation_header);
+        navigationView.inflateHeaderView(R.layout.navigation_header);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity {//implements YoutubeVideoAd
     }
 
    /* @Override
-    public void onItemClick(int position) {
+   /* public void onItemClick(int position) {
         Toast.makeText(this, "Position is " + position, Toast.LENGTH_SHORT).show();
         final ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList = generateDummyVideoList();
         YoutubeVideoAdapter adapter = new YoutubeVideoAdapter(this, youtubeVideoModelArrayList, this);
