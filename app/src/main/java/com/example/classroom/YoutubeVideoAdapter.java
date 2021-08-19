@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapter.YoutubeViewHolder> {//implements View.OnClickListener {
     private static final String TAG = YoutubeVideoAdapter.class.getSimpleName();
+    Context context;
     private final ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList;
     //itemClickListener itemClickListener;
 
@@ -32,6 +33,7 @@ public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapte
 
 
     public YoutubeVideoAdapter(Context context, ArrayList<YoutubeVideoModel> youtubeVideoModelArrayList) { //itemClickListener itemClickListener) {
+        this.context = context;
         this.youtubeVideoModelArrayList = youtubeVideoModelArrayList;
         //this.itemClickListener = itemClickListener;
     }
@@ -55,6 +57,7 @@ public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapte
 
         /* To initialize the thumbnail image view , we need to pass Developer Key */
         Log.d(TAG, "readyForLoadingYoutubeThumbnail");
+
         holder.videoThumbnailImageView.initialize(YoutubeConfig.API_KEY, new YouTubeThumbnailView.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, final YouTubeThumbnailLoader youTubeThumbnailLoader) {
@@ -65,12 +68,14 @@ public class YoutubeVideoAdapter extends RecyclerView.Adapter<YoutubeVideoAdapte
                     @Override
                     public void onThumbnailLoaded(YouTubeThumbnailView youTubeThumbnailView, String s) {
                         //when thumbnail loaded successfully release the thumbnail loader as we are showing thumbnail in adapter
+                        youTubeThumbnailView.setVisibility(View.VISIBLE);
                         youTubeThumbnailLoader.release();
                     }
 
                     @Override
                     public void onThumbnailError(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader.ErrorReason errorReason) {
                         //print or show error when thumbnail load failed
+                        youTubeThumbnailLoader.release();
                         Log.e(TAG, "Youtube Thumbnail Error");
                     }
                 });

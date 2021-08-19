@@ -3,6 +3,7 @@ package com.example.classroom;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -21,6 +22,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
         videoID = getIntent().getStringExtra("video_id");
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         initializeYoutubePlayer();
+
     }
 
     private void initializeYoutubePlayer() {

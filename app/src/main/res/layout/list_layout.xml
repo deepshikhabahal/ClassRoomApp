@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,6 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <com.google.android.youtube.player.YouTubeThumbnailView
+            android:id="@+id/video_thumbnail_image_view"
+            android:layout_width="130dp"
+            android:layout_height="160dp"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/thumbnail_image_view_desc"
+            android:scaleType="centerCrop" />
+
+        <!-- youtube thumbnail view to show the thumbnail of videos
         <view
             android:id="@+id/video_thumbnail_image_view"
             class="com.google.android.youtube.player.YouTubeThumbnailView"
@@ -30,7 +39,7 @@
             android:background="@color/colorPrimary"
             android:scaleType="centerCrop"
             android:contentDescription="@string/thumbnail_image_view_desc"
-            tools:ignore="ImageContrastCheck" />
+            tools:ignore="ImageContrastCheck" /> -->
 
 
         <TextView
