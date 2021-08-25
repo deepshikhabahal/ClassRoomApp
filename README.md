@@ -8,7 +8,7 @@ This video-streaming Classroom application will let the teacher decide what all 
 This app will certainly help the teachers to congregate all the preferred videos under one roof and to centralize the attention of their students. Teachers can use this app to deliver course information/videos to the students.
 
 Future Prospects :
-Teachers can upload the videos on the app itself by clicking on a ‘+’ sign
+Teachers can upload the videos on the app itself by clicking on a ‘+’ sign.
 The user will also be provided with the option of uploading his own video on the platform. 
 Can also incorporate live-interaction(online meeting).
 Can make use of the Firebase Database to store all the required/essential information of the user.
